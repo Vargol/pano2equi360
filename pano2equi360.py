@@ -64,8 +64,11 @@ prog = ctx.program(
         final_uv.y  /= cylinder_height; 
         final_uv.y  += 0.5f; 
 
-        f_color = texture(Texture, final_uv);
-
+        if (final_uv.y < 0 || final_uv.y > 1) { 
+           f_color = vec4(0.0, 0.0, 0.0, 0.1);
+        } else {
+           f_color = texture(Texture, final_uv);
+        } 
        }
     ''',
 )
